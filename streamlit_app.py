@@ -10,19 +10,19 @@ st.set_page_config(
 # ── Connor Group Brand Styling ────────────────────────────────────────────────
 st.markdown("""
 <style>
-  @import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@200;300;400;500;600;700&family=Playfair+Display:wght@200;300;400;700&display=swap');
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
   html, body, [class*="css"] {
-    font-family: 'Montserrat', Helvetica, Arial, sans-serif !important;
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif !important;
   }
   h1, h2 {
-    font-family: 'Playfair Display', Georgia, serif !important;
-    font-weight: 200 !important;
-    color: #212529 !important;
+    font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important;
+    color: #111827 !important;
   }
-  h3 { font-family: 'Playfair Display', Georgia, serif !important; font-weight: 400 !important; }
+  h3 { font-family: 'Inter', sans-serif !important; font-weight: 600 !important; color: #111827 !important; }
 
-  section[data-testid="stSidebar"] { background-color: #1a1a1a !important; }
+  section[data-testid="stSidebar"] { background-color: #0f1b2d !important; }
   section[data-testid="stSidebar"] h1,
   section[data-testid="stSidebar"] h2,
   section[data-testid="stSidebar"] h3,
@@ -31,37 +31,47 @@ st.markdown("""
   section[data-testid="stSidebar"] label { color: #e8e8e8 !important; }
 
   .connor-header {
-    background: linear-gradient(135deg, #1a1a1a 0%, #2d2d2d 100%);
-    padding: 28px 36px; border-radius: 8px; margin-bottom: 24px;
+    background: linear-gradient(135deg, #11567F 0%, #0f1b2d 100%);
+    padding: 28px 36px; border-radius: 10px; margin-bottom: 24px;
   }
   .connor-header h1 {
-    color: #ffffff !important; font-family: 'Playfair Display', Georgia, serif !important;
-    font-weight: 200 !important; font-size: 2em !important; margin: 0 !important;
+    color: #ffffff !important; font-family: 'Inter', sans-serif !important;
+    font-weight: 700 !important; font-size: 1.9em !important; margin: 0 !important;
   }
   .connor-header .subtitle {
-    color: #009C65; font-family: 'Montserrat', sans-serif; font-size: 0.85em;
+    color: #29B5E8; font-family: 'Inter', sans-serif; font-size: 0.85em;
     font-weight: 500; letter-spacing: 1.5px; text-transform: uppercase; margin-top: 6px;
   }
 
-  .callout-warn { background:#fef9e7; border-left:4px solid #d4a017;
+  .callout-warn { background:#fef9e7; border-left:4px solid #f59e0b;
                   padding:12px 16px; border-radius:4px; margin:10px 0; }
-  .callout-good { background:#e8f8f0; border-left:4px solid #009C65;
+  .callout-good { background:#ecfdf5; border-left:4px solid #29B5E8;
                   padding:12px 16px; border-radius:4px; margin:10px 0; }
-  .callout-info { background:#f0f7f4; border-left:4px solid #009C65;
+  .callout-info { background:#eff6ff; border-left:4px solid #29B5E8;
                   padding:12px 16px; border-radius:4px; margin:10px 0; }
 
   .section-divider {
-    border: none; border-top: 2px solid #009C65; margin: 40px 0 32px 0; opacity: 0.4;
+    border: none; border-top: 2px solid #29B5E8; margin: 40px 0 32px 0; opacity: 0.3;
   }
   .section-num {
-    display: inline-block; background: #009C65; color: #fff; width: 28px; height: 28px;
+    display: inline-block; background: #29B5E8; color: #fff; width: 28px; height: 28px;
     border-radius: 50%; text-align: center; line-height: 28px; font-size: 0.85em;
-    font-weight: 600; margin-right: 10px;
+    font-weight: 600; margin-right: 10px; vertical-align: middle;
+  }
+  h2:has(.section-num), h3:has(.section-num) {
+    background: linear-gradient(90deg, #eff6ff 0%, #f8fafc 100%);
+    border-left: 4px solid #29B5E8;
+    padding: 12px 16px;
+    border-radius: 6px;
+    margin-top: 0 !important;
   }
 
-  [data-testid="stMetric"] { background: #f8f9fa; border: 1px solid #e9ecef;
+  /* Tabs */
+  .stTabs [aria-selected="true"] { border-bottom-color: #29B5E8 !important; color: #11567F !important; font-weight: 600 !important; }
+
+  [data-testid="stMetric"] { background: #f8fafc; border: 1px solid #e2e8f0;
     border-radius: 8px; padding: 12px 16px; }
-  [data-testid="stMetricValue"] { color: #009C65 !important; }
+  [data-testid="stMetricValue"] { color: #11567F !important; }
 </style>
 """, unsafe_allow_html=True)
 
@@ -81,12 +91,11 @@ st.markdown(f"""
 """, unsafe_allow_html=True)
 
 # ── Tabs ──────────────────────────────────────────────────────────────────────
-tab_guide, tab_audit, tab_opps, tab_ent = st.tabs(["📖 Best Practices Guide", "🔍 Code Audit", "💡 Account Optimization", "🏢 Enterprise Edition Case"])
+tab_guide, tab_audit, tab_opps, tab_ent, tab_pg = st.tabs(["📖 Best Practices Guide", "🔍 Code Audit", "💡 Account Optimization", "🏢 Enterprise Edition Case", "🐘 Snowflake Postgres"])
 
 with tab_guide:
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">1</span>', unsafe_allow_html=True)
-    st.header("Use the Right Function")
+    st.markdown('<h2><span class="section-num">1</span> Use the Right Function</h2>', unsafe_allow_html=True)
     st.markdown("""
 `AI_COMPLETE` is the **most expensive** AI function. Many tasks already have a cheaper,
 purpose-built alternative. Using the dedicated function gives you lower cost, more
@@ -105,8 +114,7 @@ consistent output, and often better accuracy.
 """)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">2</span>', unsafe_allow_html=True)
-    st.header("AI_FILTER as a Pre-Filter Gate")
+    st.markdown('<h2><span class="section-num">2</span> AI_FILTER as a Pre-Filter Gate</h2>', unsafe_allow_html=True)
     st.markdown("""
 `AI_FILTER` is the **cheapest** AI function — it returns a boolean. It also includes a
 built-in optimization that provides **2–10x faster performance** and up to **60% lower
@@ -138,8 +146,7 @@ Don't pass them as two separate arguments — that only works for image files.
 """, unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">3</span>', unsafe_allow_html=True)
-    st.header("AI_EXTRACT — Correct Syntax")
+    st.markdown('<h2><span class="section-num">3</span> AI_EXTRACT — Correct Syntax</h2>', unsafe_allow_html=True)
     st.markdown("""
 `AI_EXTRACT` pulls structured fields from text or documents. The `responseFormat` values
 must be **natural language questions or descriptions** — not type names like `'string'`.
@@ -166,8 +173,7 @@ AI_EXTRACT(
 """, language="sql")
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">4</span>', unsafe_allow_html=True)
-    st.header("Model Selection for AI_COMPLETE")
+    st.markdown('<h2><span class="section-num">4</span> Model Selection for AI_COMPLETE</h2>', unsafe_allow_html=True)
     st.markdown("""
 When you must use `AI_COMPLETE`, the model choice has a **major cost impact**. Start with
 the smallest model, test quality on 50–100 rows, then upgrade only if accuracy is insufficient.
@@ -195,8 +201,7 @@ the smallest model, test quality on 50–100 rows, then upgrade only if accuracy
 """, unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">5</span>', unsafe_allow_html=True)
-    st.header("Pipeline Pattern — Chain Cheap to Expensive")
+    st.markdown('<h2><span class="section-num">5</span> Pipeline Pattern — Chain Cheap to Expensive</h2>', unsafe_allow_html=True)
     st.markdown("""
 Build a **funnel**: cheapest functions first, most expensive last. `AI_FILTER` (boolean)
 → `AI_CLASSIFY` (dedicated) → `AI_EXTRACT` (only on classified rows).
@@ -219,8 +224,7 @@ WHERE AI_FILTER(PROMPT('This is a customer complaint needing immediate attention
 """, language="sql")
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">6</span>', unsafe_allow_html=True)
-    st.header("Batch Processing — Never Row-by-Row")
+    st.markdown('<h2><span class="section-num">6</span> Batch Processing — Never Row-by-Row</h2>', unsafe_allow_html=True)
     st.markdown("Always apply AI functions in **set-based SQL**. Row-by-row loops kill performance and exhaust concurrency.")
     col_bad, col_good = st.columns(2)
     with col_bad:
@@ -245,8 +249,7 @@ WHERE processed_at IS NULL;
 """, language="sql")
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">7</span>', unsafe_allow_html=True)
-    st.header("Dynamic Tables — Use ADAPTIVE Refresh")
+    st.markdown('<h2><span class="section-num">7</span> Dynamic Tables — Use ADAPTIVE Refresh</h2>', unsafe_allow_html=True)
     st.markdown("""
 `REFRESH_MODE = ADAPTIVE` is the **recommended mode** for pipelines that use AI functions.
 Snowflake's ADAPTIVE heuristic automatically **skips reinitialization** when it detects
@@ -274,8 +277,7 @@ FROM raw_reviews;
 """, unsafe_allow_html=True)
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">8</span>', unsafe_allow_html=True)
-    st.header("Trim Text to Reduce Token Costs")
+    st.markdown('<h2><span class="section-num">8</span> Trim Text to Reduce Token Costs</h2>', unsafe_allow_html=True)
     st.markdown("""
 AI functions are billed by token. Sending HTML, boilerplate headers, extra whitespace,
 or duplicate context inflates cost with zero accuracy benefit.
@@ -290,8 +292,7 @@ FROM emails;
 """, language="sql")
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">9</span>', unsafe_allow_html=True)
-    st.header("Remove the Deprecated SNOWFLAKE.CORTEX.* Namespace")
+    st.markdown('<h2><span class="section-num">9</span> Remove the Deprecated SNOWFLAKE.CORTEX.* Namespace</h2>', unsafe_allow_html=True)
     st.markdown("This namespace is **deprecated and will be removed by end of 2026.** Migrate all code now.")
     col_dep, col_new = st.columns(2)
     with col_dep:
@@ -302,8 +303,7 @@ FROM emails;
         st.code("SELECT AI_COMPLETE('llama3.1-8b', prompt);\nSELECT AI_CLASSIFY(text, labels);\nSELECT AI_SENTIMENT(text);", language="sql")
 
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">10</span>', unsafe_allow_html=True)
-    st.header("Sample Before Running at Scale")
+    st.markdown('<h2><span class="section-num">10</span> Sample Before Running at Scale</h2>', unsafe_allow_html=True)
     st.markdown("Always validate accuracy and estimate cost on a small sample before committing to millions of rows.")
     st.code("""
 -- Test on 100 rows first
@@ -459,8 +459,7 @@ Based on trailing 95-day warehouse telemetry, token-level AI billing data, and f
 
     # ── Opportunity 1 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">1</span>', unsafe_allow_html=True)
-    st.subheader("Auto-Suspend Configuration — Immediate, Low-Risk Savings")
+    st.markdown('<h3><span class="section-num">1</span> Auto-Suspend Configuration — Immediate, Low-Risk Savings</h3>', unsafe_allow_html=True)
     st.markdown("""
 Three warehouses have auto-suspend set to **600 seconds (10 minutes)**. For intermittent or 
 batch workloads, this causes idle compute burn after the last query completes. Standard 
@@ -485,8 +484,7 @@ ALTER WAREHOUSE KINSTA_WH SET AUTO_SUSPEND = 60;
 
     # ── Opportunity 2 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">2</span>', unsafe_allow_html=True)
-    st.subheader("DATA_PIPELINE_WH — Snowpark UDF Overhead")
+    st.markdown('<h3><span class="section-num">2</span> DATA_PIPELINE_WH — Snowpark UDF Overhead</h3>', unsafe_allow_html=True)
     st.markdown("""
 Snowpark credits on DATA_PIPELINE_WH (**1,700**) exceed base warehouse compute (**1,263**) 
 over 95 days. Of those, **472 credits** are Python UDF execution — nearly a third of total 
@@ -506,8 +504,7 @@ Given the `SVC_GITLAB_PIPELINES` usage pattern (dbt + Snowpark DE + COPY), this 
 
     # ── Opportunity 3 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">3</span>', unsafe_allow_html=True)
-    st.subheader("AI Model Selection — Material Credit Reduction")
+    st.markdown('<h3><span class="section-num">3</span> AI Model Selection — Material Credit Reduction</h3>', unsafe_allow_html=True)
     st.markdown("Token-level billing shows significant cost variation across models:")
     model_costs = pd.DataFrame([
         {"Model": "openai-gpt-5-mini", "Credits/M Tokens": 0.18, "Tier": "Economy"},
@@ -535,8 +532,7 @@ The team already ran multi-model benchmarking on July 15 — they have the data 
 
     # ── Opportunity 4 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">4</span>', unsafe_allow_html=True)
-    st.subheader("EMBED_TEXT Bulk Runs — Batching Strategy")
+    st.markdown('<h3><span class="section-num">4</span> EMBED_TEXT Bulk Runs — Batching Strategy</h3>', unsafe_allow_html=True)
     st.markdown("""
 The June 8–10 embedding burst (**10.2 billion tokens in 3 days**) consumed ~508 credits. 
 The concentration suggests it ran without throttling or batching controls.
@@ -550,8 +546,7 @@ The concentration suggests it ran without throttling or batching controls.
 
     # ── Opportunity 5 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">5</span>', unsafe_allow_html=True)
-    st.subheader("Resource Monitors — Spike Prevention")
+    st.markdown('<h3><span class="section-num">5</span> Resource Monitors — Spike Prevention</h3>', unsafe_allow_html=True)
     st.markdown("""
 April 2025 (1,491 credits) and May 2025 (2,700 credits) are the two largest months since 
 account creation. **No resource monitors are currently visible** in the account.
@@ -579,8 +574,7 @@ ALTER WAREHOUSE COMPUTE_WH SET RESOURCE_MONITOR = compute_wh_guard;
 
     # ── Opportunity 6 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">6</span>', unsafe_allow_html=True)
-    st.subheader("SENTIMENT_DETECT Growth Trajectory — Monitor Before It Scales")
+    st.markdown('<h3><span class="section-num">6</span> SENTIMENT_DETECT Growth Trajectory — Monitor Before It Scales</h3>', unsafe_allow_html=True)
     st.markdown("""
 Running daily since May 20, 2026 (90+ consecutive days). Token volume has grown **110x**: 
 from 317 tokens/day → 35,000+ tokens/day in August. At this rate, could reach 100K–200K 
@@ -613,8 +607,7 @@ CREATE ALERT sentiment_volume_alert
 
     # ── Opportunity 7 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">7</span>', unsafe_allow_html=True)
-    st.subheader("Dynamic Tables — Target Lag Review")
+    st.markdown('<h3><span class="section-num">7</span> Dynamic Tables — Target Lag Review</h3>', unsafe_allow_html=True)
     st.markdown("""
 **1,088 credits** from DT REFRESH across **152,313 refresh jobs** over the trailing period 
 (~1,600 refresh jobs/day). If any tables have a target lag of ≤1 minute but serve dashboards 
@@ -635,8 +628,7 @@ ALTER DYNAMIC TABLE my_db.my_schema.my_dt SET TARGET_LAG = '5 minutes';
 
     # ── Opportunity 8 ─────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">8</span>', unsafe_allow_html=True)
-    st.subheader("Dual CI/CD Platforms — Redundancy Cost")
+    st.markdown('<h3><span class="section-num">8</span> Dual CI/CD Platforms — Redundancy Cost</h3>', unsafe_allow_html=True)
     st.markdown("""
 Both **GitLab CI/CD** (`SVC_GITLAB_PIPELINES` — 658 credits, dbt + ingestion) and 
 **GitHub Actions** (`SVC_GITHUB_WORKFLOWS` — 73 credits, lighter workflows) are active.
@@ -667,8 +659,7 @@ with tab_ent:
 
     # ── Reason 1 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">1</span>', unsafe_allow_html=True)
-    st.subheader("A Governance Crisis Hidden in Plain Sight")
+    st.markdown('<h3><span class="section-num">1</span> A Governance Crisis Hidden in Plain Sight</h3>', unsafe_allow_html=True)
     st.markdown("""
 The account has **no MFA policy** at any level. Combined with the current admin assignments, 
 this creates material security exposure:
@@ -689,8 +680,7 @@ this creates material security exposure:
 
     # ── Reason 2 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">2</span>', unsafe_allow_html=True)
-    st.subheader("Multi-Cluster Warehouses — Workload Has Outgrown Single-Cluster")
+    st.markdown('<h3><span class="section-num">2</span> Multi-Cluster Warehouses — Workload Has Outgrown Single-Cluster</h3>', unsafe_allow_html=True)
     st.markdown("""
 **22 users** and **5 million query jobs** from **49 tools/connectors** share single-cluster 
 XSmall warehouses. COMPUTE_WH alone: 1,253 credits in 95 days — heavily utilized and continuously running.
@@ -720,8 +710,7 @@ and pipeline workloads.
 
     # ── Reason 3 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">3</span>', unsafe_allow_html=True)
-    st.subheader("Search Optimization Service — Addresses Highest-Volume Workload")
+    st.markdown('<h3><span class="section-num">3</span> Search Optimization Service — Addresses Highest-Volume Workload</h3>', unsafe_allow_html=True)
     st.markdown("""
 LEADLIFECYCLE: **1 million+ query jobs**, 1,337 credits, primarily Python Connector SELECT 
 queries. For a multifamily operator, this almost certainly includes selective point-lookups — 
@@ -734,8 +723,7 @@ selective queries = meaningful credit savings + faster IIS application response 
 
     # ── Reason 4 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">4</span>', unsafe_allow_html=True)
-    st.subheader("90-Day Time Travel — Required for Their Industry")
+    st.markdown('<h3><span class="section-num">4</span> 90-Day Time Travel — Required for Their Industry</h3>', unsafe_allow_html=True)
     st.markdown("""
 Standard Edition: **1 day** of Time Travel.  
 Enterprise Edition: **up to 90 days.**
@@ -749,8 +737,7 @@ One day of Time Travel is operationally inadequate for that environment.
 
     # ── Reason 5 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<span class="section-num">5</span>', unsafe_allow_html=True)
-    st.subheader("Materialized Views — Pre-Compute Dashboard Aggregations")
+    st.markdown('<h3><span class="section-num">5</span> Materialized Views — Pre-Compute Dashboard Aggregations</h3>', unsafe_allow_html=True)
     st.markdown("""
 DASHBOARD_WH (308 credits) + REPORTING_WH (308 credits) = **616 credits** dedicated to 
 BI query serving over 95 days. Both run daily with consistent, repeating query patterns.
@@ -853,9 +840,187 @@ has no MFA. That is a <strong>live exposure</strong> that Authentication Policie
 resolve immediately. The risk is measurable and the fix is available.
 </div>
 """, unsafe_allow_html=True)
+with tab_pg:
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">↗</span> Snowflake Postgres — Eliminate the Sync Layer</h2>', unsafe_allow_html=True)
+    st.markdown("""
+**The opportunity:** The Connor Group currently runs ~12 Python web apps on Sevalla that read 
+from a co-hosted Postgres database synced hourly from Snowflake. Snowflake Postgres can 
+replace that external Postgres entirely — your apps connect via standard `psql` / `psycopg2` 
+to a Postgres-compatible endpoint backed directly by Snowflake data.
+""")
 
-# ══════════════════════════════════════════════════════════════════════════════
-# FOOTER
+    # ── Current Architecture ──────────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">1</span> Current Architecture</h2>', unsafe_allow_html=True)
+    st.markdown("""
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    CURRENT STATE                             │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Snowflake (source of truth)                                │
+│       │                                                     │
+│       │  hourly incremental sync (KINSTA_WH)                │
+│       ▼                                                     │
+│  Postgres on Sevalla (app database)                         │
+│       │                                                     │
+│       │  fast reads                                         │
+│       ▼                                                     │
+│  ~12 Python Web Apps (reporting + CRUD)                     │
+│       │                                                     │
+│       │  user input pushed back                             │
+│       ▼                                                     │
+│  Snowflake (dims/facts updated)                             │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+""")
+    st.markdown("""
+**Pain points of this approach:**
+- Hourly sync means data is always up to 60 minutes stale
+- Maintaining a separate Postgres instance (Sevalla cost, ops burden)
+- Two systems to monitor, backup, and secure
+- Schema drift risk between Snowflake and the Postgres replica
+- The sync job itself (KINSTA_WH) consuming Snowflake credits
+""")
+
+    # ── Proposed Architecture ─────────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">2</span> Proposed Architecture with Snowflake Postgres</h2>', unsafe_allow_html=True)
+    st.markdown("""
+```
+┌─────────────────────────────────────────────────────────────┐
+│                    PROPOSED STATE                            │
+├─────────────────────────────────────────────────────────────┤
+│                                                             │
+│  Snowflake (source of truth)                                │
+│       │                                                     │
+│       │  Snowflake Postgres endpoint                        │
+│       │  (native psql/psycopg2 compatible)                  │
+│       ▼                                                     │
+│  ~12 Python Web Apps (reporting + CRUD)                     │
+│       │  ← connect via standard Postgres wire protocol      │
+│       │  ← reads are live (no sync delay)                   │
+│       │  ← writes go directly to Snowflake                  │
+│       │                                                     │
+│  No external Postgres needed                                │
+│                                                             │
+└─────────────────────────────────────────────────────────────┘
+```
+""")
+    st.markdown("""
+**What changes:**
+- Apps swap their Postgres connection string → Snowflake Postgres endpoint
+- No code rewrite — standard `psycopg2`, SQLAlchemy, Django ORM all work
+- Sync layer eliminated entirely (no more hourly job, no KINSTA_WH credits)
+- Data is always fresh — no 60-minute staleness window
+- One system to govern, monitor, and secure
+""")
+
+    # ── What is Snowflake Postgres ────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">3</span> What is Snowflake Postgres?</h2>', unsafe_allow_html=True)
+    st.markdown("""
+Snowflake Postgres is a **Postgres-compatible interface** to Snowflake. It speaks the 
+PostgreSQL wire protocol natively, so existing tools and applications that connect to 
+Postgres can connect to Snowflake without modification.
+
+**Key capabilities:**
+- Standard Postgres connection via `psql`, `psycopg2`, `pg8000`, SQLAlchemy, Django ORM
+- Read and write access to Snowflake tables
+- Supports transactions, prepared statements, parameterized queries
+- Works with any Postgres client library in any language (Python, Node.js, Go, Java, etc.)
+- Managed by Snowflake — no server to provision, patch, or scale
+""")
+
+    # ── Migration Path ────────────────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">4</span> Migration Path for Connor Group Apps</h2>', unsafe_allow_html=True)
+    st.markdown("""
+**Phase 1 — Prove it out (1 app, read-only)**
+1. Create a Snowflake Postgres instance
+2. Pick the simplest reporting app (read-only, no user input)
+3. Change the connection string from Sevalla Postgres → Snowflake Postgres
+4. Validate: correct data, acceptable latency, no code changes needed
+
+**Phase 2 — Add write-back**
+1. Pick an app with user input (CRUD)
+2. Test INSERT/UPDATE operations via the Postgres endpoint
+3. Verify data lands correctly in Snowflake tables
+
+**Phase 3 — Migrate remaining apps**
+1. Systematically move apps off Sevalla Postgres
+2. Decommission the hourly sync job
+3. Drop KINSTA_WH (or repurpose)
+
+**Phase 4 — Decommission Sevalla Postgres**
+1. Cancel the external Postgres hosting
+2. All apps now read/write directly to Snowflake via Postgres protocol
+""")
+
+    st.code("""
+-- Create a Snowflake Postgres instance
+CREATE POSTGRES INSTANCE connor_apps_pg
+  WAREHOUSE = COMPUTE_WH;
+
+-- Your apps connect with standard psycopg2:
+-- import psycopg2
+-- conn = psycopg2.connect(
+--     host="<account>.snowflakecomputing.com",
+--     port=5432,
+--     database="<database>",
+--     user="<user>",
+--     password="<password>"
+-- )
+""", language="sql")
+
+    # ── Cost Impact ───────────────────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">5</span> Cost & Operational Impact</h2>', unsafe_allow_html=True)
+
+    cost_data = pd.DataFrame([
+        {"Item": "KINSTA_WH (hourly sync)", "Current Cost": "22 credits/95 days", "After Migration": "Eliminated"},
+        {"Item": "Sevalla Postgres hosting", "Current Cost": "Monthly hosting fee", "After Migration": "Eliminated"},
+        {"Item": "Sync job maintenance", "Current Cost": "Engineering time", "After Migration": "Eliminated"},
+        {"Item": "Data staleness", "Current Cost": "Up to 60 min stale", "After Migration": "Live / real-time"},
+        {"Item": "Snowflake Postgres compute", "Current Cost": "N/A", "After Migration": "Included in warehouse usage"},
+    ])
+    st.dataframe(cost_data, use_container_width=True, hide_index=True)
+
+    st.markdown("""
+<div class="callout-good">
+✅ <strong>Net effect:</strong> Eliminate Sevalla Postgres hosting cost + KINSTA_WH credits + 
+sync job maintenance, in exchange for direct Snowflake compute (which they're already paying for). 
+Data goes from 60-min stale to live. One fewer system to manage.
+</div>
+""", unsafe_allow_html=True)
+
+    # ── Why Not Streamlit ─────────────────────────────────────────────────────
+    st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
+    st.markdown('<h2><span class="section-num">6</span> Why This Fits (and Why Streamlit Didn\'t)</h2>', unsafe_allow_html=True)
+    st.markdown("""
+The Connor Group evaluated Streamlit and moved away for valid reasons:
+- **Cost** — warehouse spin-up for every app interaction
+- **Capability** — full-stack apps need custom JS/CSS/HTML that Streamlit can't do
+- **Logins** — didn't want end users needing Snowflake credentials
+
+**Snowflake Postgres solves a different problem entirely:**
+- It doesn't replace their web apps — it replaces the **database layer** behind them
+- Their Python apps stay on Sevalla exactly as-is
+- The only change is the connection string (Sevalla Postgres → Snowflake Postgres)
+- End users never interact with Snowflake directly — they still use the web apps
+- No new login system, no UI migration, no capability loss
+""")
+    st.markdown("""
+<div class="callout-info">
+💡 <strong>Key framing for the conversation:</strong> "We're not asking you to change your apps 
+or your UX. We're asking if you'd like to remove the Postgres middleman and let your apps 
+talk directly to Snowflake using the same Postgres protocol they already speak."
+</div>
+""", unsafe_allow_html=True)
+
+
 # ══════════════════════════════════════════════════════════════════════════════
 st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
 st.markdown("""
