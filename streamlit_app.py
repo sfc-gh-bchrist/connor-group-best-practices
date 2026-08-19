@@ -932,6 +932,10 @@ Postgres can connect to Snowflake without modification.
 - Supports transactions, prepared statements, parameterized queries
 - Works with any Postgres client library in any language (Python, Node.js, Go, Java, etc.)
 - Managed by Snowflake — no server to provision, patch, or scale
+
+**Learn more:**
+- [Snowflake Postgres Product Page](https://www.snowflake.com/en/product/features/postgres/)
+- [Postgres Data Mirroring Blog](https://www.snowflake.com/en/blog/postgres-data-mirroring/)
 """)
 
     # ── Migration Path ────────────────────────────────────────────────────────
