@@ -772,7 +772,7 @@ SELECT
   DATE_TRUNC('day', report_date) AS report_day,
   COUNT_IF(status = 'OCCUPIED') AS occupied_units,
   COUNT(*) AS total_units,
-  occupied_units / total_units AS occupancy_rate
+  COUNT_IF(status = 'OCCUPIED') / COUNT(*) AS occupancy_rate
 FROM unit_status
 GROUP BY property_code, report_day;
 """, language="sql")
@@ -780,8 +780,8 @@ GROUP BY property_code, report_day;
     st.markdown("#### Multi-Cluster on COMPUTE_WH")
     st.code("""
 ALTER WAREHOUSE COMPUTE_WH SET
-  MIN_CLUSTER_COUNT = 1
-  MAX_CLUSTER_COUNT = 2
+  MIN_CLUSTER_COUNT = 1,
+  MAX_CLUSTER_COUNT = 2,
   SCALING_POLICY = 'ECONOMY';  -- scale up only when fully queued
 """, language="sql")
 
