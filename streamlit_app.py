@@ -527,7 +527,7 @@ That's <strong>270–326 credits saved on a single day's run</strong>.
 - **Bulk/batch** (backfills, scoring, embedding refreshes) → `llama3.1-70b` or `openai-gpt-5-mini`
 - **Real-time user-facing** (where quality justifiably matters) → `openai-gpt-5.2` or `openai-gpt-4.1`
 
-The team already ran multi-model benchmarking on July 15 — they have the data to make this decision.
+The team already ran multi-model benchmarking on July 15 — you have the data to make this decision.
 """)
 
     # ── Opportunity 4 ─────────────────────────────────────────────────────────
@@ -723,12 +723,12 @@ selective queries = meaningful credit savings + faster IIS application response 
 
     # ── Reason 4 ──────────────────────────────────────────────────────────────
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
-    st.markdown('<h3><span class="section-num">4</span> 90-Day Time Travel — Required for Their Industry</h3>', unsafe_allow_html=True)
+    st.markdown('<h3><span class="section-num">4</span> 90-Day Time Travel — Required for Your Industry</h3>', unsafe_allow_html=True)
     st.markdown("""
 Standard Edition: **1 day** of Time Travel.  
 Enterprise Edition: **up to 90 days.**
 
-The Connor Group handles resident applications, lease agreements, maintenance records, and 
+You handle resident applications, lease agreements, maintenance records, and 
 financial data. **Fair housing compliance and landlord-tenant law** in many jurisdictions 
 requires producing historical data records for audits, disputes, or legal discovery. 
 
@@ -827,7 +827,7 @@ ALTER TABLE tenants MODIFY COLUMN income SET MASKING POLICY mask_pii;
     st.header("The Alignment Argument")
     st.markdown("""
 <div class="callout-info">
-💡 <strong>This is their most active account.</strong> PZA77439 has run <strong>5 million query jobs</strong>, 
+💡 <strong>This is your most active account.</strong> PZA77439 has run <strong>5 million query jobs</strong>, 
 14,249 total credits, 22 users, and 49 integrated tools. Leaving the most active account on the 
 least-capable edition creates a capability and governance gap that only grows as usage scales.
 </div>
@@ -844,7 +844,7 @@ with tab_pg:
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<h2><span class="section-num">↗</span> Snowflake Postgres — Eliminate the Sync Layer</h2>', unsafe_allow_html=True)
     st.markdown("""
-**The opportunity:** The Connor Group currently runs ~12 Python web apps on Sevalla that read 
+**The opportunity:** You currently run ~12 Python web apps on Sevalla that read 
 from a co-hosted Postgres database synced hourly from Snowflake. Snowflake Postgres can 
 replace that external Postgres entirely — your apps connect via standard `psql` / `psycopg2` 
 to a Postgres-compatible endpoint backed directly by Snowflake data.
@@ -911,7 +911,7 @@ to a Postgres-compatible endpoint backed directly by Snowflake data.
 """)
     st.markdown("""
 **What changes:**
-- Apps swap their Postgres connection string → Snowflake Postgres endpoint
+- You swap your Postgres connection string → Snowflake Postgres endpoint
 - No code rewrite — standard `psycopg2`, SQLAlchemy, Django ORM all work
 - Sync layer eliminated entirely (no more hourly job, no KINSTA_WH credits)
 - Data is always fresh — no 60-minute staleness window
@@ -995,7 +995,7 @@ CREATE POSTGRES INSTANCE connor_apps_pg
     st.markdown("""
 <div class="callout-good">
 ✅ <strong>Net effect:</strong> Eliminate Sevalla Postgres hosting cost + KINSTA_WH credits + 
-sync job maintenance, in exchange for direct Snowflake compute (which they're already paying for). 
+sync job maintenance, in exchange for direct Snowflake compute (which you're already paying for). 
 Data goes from 60-min stale to live. One fewer system to manage.
 </div>
 """, unsafe_allow_html=True)
@@ -1004,23 +1004,23 @@ Data goes from 60-min stale to live. One fewer system to manage.
     st.markdown('<hr class="section-divider">', unsafe_allow_html=True)
     st.markdown('<h2><span class="section-num">6</span> Why This Fits (and Why Streamlit Didn\'t)</h2>', unsafe_allow_html=True)
     st.markdown("""
-The Connor Group evaluated Streamlit and moved away for valid reasons:
+You evaluated Streamlit and moved away for valid reasons:
 - **Cost** — warehouse spin-up for every app interaction
 - **Capability** — full-stack apps need custom JS/CSS/HTML that Streamlit can't do
-- **Logins** — didn't want end users needing Snowflake credentials
+- **Logins** — you didn't want end users needing Snowflake credentials
 
 **Snowflake Postgres solves a different problem entirely:**
-- It doesn't replace their web apps — it replaces the **database layer** behind them
-- Their Python apps stay on Sevalla exactly as-is
+- It doesn't replace your web apps — it replaces the **database layer** behind them
+- Your Python apps stay on Sevalla exactly as-is
 - The only change is the connection string (Sevalla Postgres → Snowflake Postgres)
-- End users never interact with Snowflake directly — they still use the web apps
+- End users never interact with Snowflake directly — they still use your web apps
 - No new login system, no UI migration, no capability loss
 """)
     st.markdown("""
 <div class="callout-info">
 💡 <strong>Key framing for the conversation:</strong> "We're not asking you to change your apps 
 or your UX. We're asking if you'd like to remove the Postgres middleman and let your apps 
-talk directly to Snowflake using the same Postgres protocol they already speak."
+talk directly to Snowflake using the same Postgres protocol your apps already speak."
 </div>
 """, unsafe_allow_html=True)
 
